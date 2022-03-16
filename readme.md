@@ -1,4 +1,4 @@
-# Noitification App
+# Pro Trade Signals App
 
 ## Installation
 
