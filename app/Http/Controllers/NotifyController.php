@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use app\Events\MessageSent;
 use App\Models\Notification;
 use Inertia\Inertia;
 use App\Models\Pair;
@@ -37,9 +38,9 @@ class NotifyController extends Controller
      */
     public function store(Request $request)
     {
-        dd(Request::all());
+        // dd(Request::all());
 
-        
+        event(new MessageSent(Request::all()));
     }
 
     public function getLatestPrice($id = '')

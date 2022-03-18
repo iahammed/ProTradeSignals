@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Broadcast;
+use App\Models\Message;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
+Broadcast::channel('testchannel', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+window.Echo.private(`testchannel`)
+        .listen('MessageSent', (e) => {
+            console.log(e.message);
+        });
